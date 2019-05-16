@@ -20,7 +20,7 @@ def addChromosomes(outputFile):
                   [16,"16"],[17,"17"],[18,"18"],[19,"19"],[20,"20"],
                   [21,"21"],[22,"22"],[23,"x"], [24,"y"]]:
         outputFile.write(
-            "INSERT INTO Chromosomes VALUES({} ,{});\n".format(str(chrom[0]),chrom[1])
+            "INSERT INTO Chromosomes VALUES({} ,\"{}\");\n".format(chrom[0],chrom[1])
         )
 
 
@@ -44,8 +44,8 @@ def addMutations(file,outputFile):
                     benign = 0
 
                 outputFile.write(
-                    "INSERT INTO Mutations VALUES ({},{},{},"
-                    "{},{},{},{},{},{},{},{});\n".format(id,chrom,pos,
+                    "INSERT INTO Mutations VALUES (\"{}\",{},{},"
+                    "\"{}\",\"{}\",{},{},{},{},{},{});\n".format(id,chrom,pos,
                                                       ref,alt,qual,
                                                       count,total,benign,
                                                       cancerCount,cancerTotal)
