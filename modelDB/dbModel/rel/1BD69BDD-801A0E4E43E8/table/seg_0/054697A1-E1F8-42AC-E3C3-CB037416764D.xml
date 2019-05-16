@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="054697A1-E1F8-42AC-E3C3-CB037416764D" name="mutations">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="054697A1-E1F8-42AC-E3C3-CB037416764D" name="Mutations">
 <createdBy>ajare</createdBy>
 <createdTime>2019-05-02 15:58:50 UTC</createdTime>
 <generatorID>0A2282DE-B0BF-B6C6-B2BB-ED2A0151757F</generatorID>
@@ -103,30 +103,35 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="allelFreq" id="125067AD-BF7A-7B80-1B3E-856B50F10137">
+<Column name="benign" id="28AC6A51-4664-02A8-E548-8A6609C74194">
 <createdBy>ajare</createdBy>
-<createdTime>2019-05-02 15:58:50 UTC</createdTime>
-<generatorID>F771BB99-3CEC-219B-95F9-DEE3D8FE4B95</generatorID>
+<createdTime>2019-05-16 13:49:52 UTC</createdTime>
 <ownerDesignName>dbModel</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT020</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<dataTypeScale>2</dataTypeScale>
-<ownDataTypeParameters>,5,2</ownDataTypeParameters>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="cancerFreq" id="893B6526-FB05-85E4-6AE6-E798881F15A6">
+<Column name="cancerCount" id="67805F43-FE94-8685-6C72-7DEF6E3C11E2">
 <createdBy>ajare</createdBy>
-<createdTime>2019-05-07 09:47:29 UTC</createdTime>
-<generatorID>5B63D562-A47B-6E87-8F59-5A66C8A34F3A</generatorID>
+<createdTime>2019-05-16 13:23:33 UTC</createdTime>
 <ownerDesignName>dbModel</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT020</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<dataTypeScale>2</dataTypeScale>
-<ownDataTypeParameters>,5,2</ownDataTypeParameters>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cancerTotal" id="6A5AD1C1-2FD4-E8B9-18AD-C25E206F49C9">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-16 13:23:54 UTC</createdTime>
+<ownerDesignName>dbModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
