@@ -26,7 +26,7 @@ def addChromosomes(outputFile):
 
 # Function to add queries for adding the data in the file to the Mutations Table
 def addMutations(file,outputFile):
-    idList = []
+    idList = {}
     
     for line in file:
         if not line.startswith("#"):
@@ -36,11 +36,12 @@ def addMutations(file,outputFile):
                 pos = int(lineParts[1])
                 id = lineParts[2]
                 
-                if id in idList and id[-2:].startswith("."):
-                        id = id[:-1]+ (int(id[-1:])+1)
+                if id in idList.keys():
+                        idList[id] = idList[id]+1
+                        id = id + "." + str(idList[id])
                 else:
+                    idList[id] = 1
                     id += ".1"
-                    idList.append(id)
             
                 ref = lineParts[3]
                 alt = lineParts[4]
