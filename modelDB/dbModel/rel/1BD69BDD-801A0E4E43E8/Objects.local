@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="Table" objectID="054697A1-E1F8-42AC-E3C3-CB037416764D" name="mutations" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.Table" propertyParentId="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Table" objectID="AC6F50F1-4B80-C499-19D1-32CBB718AE56" name="Chromosomes" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.Table" propertyParentId="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" propertySourceId="" propertyTargetId=""/>
+   <object objectType="FKIndexAssociation" objectID="462D5264-1402-F095-6E57-66F2684A5540" name="mutations_Chromosomes_FK" containerID="054697A1-E1F8-42AC-E3C3-CB037416764D" refContainerID="AC6F50F1-4B80-C499-19D1-32CBB718AE56" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" propertyParentId="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" propertySourceId="AC6F50F1-4B80-C499-19D1-32CBB718AE56" propertyTargetId="054697A1-E1F8-42AC-E3C3-CB037416764D"/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>

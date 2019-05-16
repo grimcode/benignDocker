@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="462D5264-1402-F095-6E57-66F2684A5540" containerWithKeyObject="054697A1-E1F8-42AC-E3C3-CB037416764D" localFKIndex="2F41ED19-02CC-AE8C-3028-E8BA2BB5DD5D" name="mutations_Chromosomes_FK">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 15:58:50 UTC</createdTime>
+<generatorID>A3680B8B-D627-64A6-77C3-18DBB2344BEC</generatorID>
+<ownerDesignName>dbModel</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>AC6F50F1-4B80-C499-19D1-32CBB718AE56</referredTableID>
+<keyObject>90778640-950C-7F99-0462-78D4AA37A210</keyObject>
+<referredKeyID>90778640-950C-7F99-0462-78D4AA37A210</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

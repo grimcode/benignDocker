@@ -1,0 +1,158 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="054697A1-E1F8-42AC-E3C3-CB037416764D" name="mutations">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 15:58:50 UTC</createdTime>
+<generatorID>0A2282DE-B0BF-B6C6-B2BB-ED2A0151757F</generatorID>
+<ownerDesignName>dbModel</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="7F66CD47-9782-DB99-E4C1-EBDEA69797B2">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 15:58:50 UTC</createdTime>
+<generatorID>809CDF48-8772-2BDF-4055-180647CAE881</generatorID>
+<ownerDesignName>dbModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="chromID" id="C6712826-D8FC-A3A0-FD32-9E7C7E5E8916">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 15:58:50 UTC</createdTime>
+<generatorID>47F79E04-2689-6EBC-EF1D-589C983FAE82</generatorID>
+<ownerDesignName>dbModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="462D5264-1402-F095-6E57-66F2684A5540" referredColumn="2E65CA74-FB7A-F8FB-20C1-5DD53F0C0C1B"/>
+</associations>
+</Column>
+<Column name="position" id="62B4F16E-DDDA-DBF7-960E-A5286A040FF0">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 15:58:50 UTC</createdTime>
+<generatorID>707F9072-DDFF-E9F2-FDB0-B93997C1555A</generatorID>
+<ownerDesignName>dbModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="reference" id="E61F5BD4-CB33-33D7-6E93-0D5E8D126A58">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 15:58:50 UTC</createdTime>
+<generatorID>136313FC-4DFA-5A55-C922-E2C350EB098F</generatorID>
+<ownerDesignName>dbModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="variant" id="C67D2ECE-94DF-0A07-CD1E-93544ED4F415">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 15:58:50 UTC</createdTime>
+<generatorID>C0C390E2-C7B4-E9AD-40B7-72DF4E62B7CB</generatorID>
+<ownerDesignName>dbModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="qual" id="16DDACAA-1884-269B-2980-F94FEDCE6C5B">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 15:58:50 UTC</createdTime>
+<generatorID>206CD04A-2D62-4202-48BF-88F28F56F331</generatorID>
+<ownerDesignName>dbModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,20,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="allelCount" id="498BB434-EE12-689F-49D5-AF8C2FBFDFA1">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-16 10:37:10 UTC</createdTime>
+<ownerDesignName>dbModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="allelTotal" id="B97DDC02-823B-133A-FFE0-780B745700F4">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-16 10:37:10 UTC</createdTime>
+<ownerDesignName>dbModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="allelFreq" id="125067AD-BF7A-7B80-1B3E-856B50F10137">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 15:58:50 UTC</createdTime>
+<generatorID>F771BB99-3CEC-219B-95F9-DEE3D8FE4B95</generatorID>
+<ownerDesignName>dbModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,5,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cancerFreq" id="893B6526-FB05-85E4-6AE6-E798881F15A6">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-07 09:47:29 UTC</createdTime>
+<generatorID>5B63D562-A47B-6E87-8F59-5A66C8A34F3A</generatorID>
+<ownerDesignName>dbModel</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,5,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A609BBFA-BD96-F568-DCC7-B54865901D0E" name="mutations_PK">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 15:58:50 UTC</createdTime>
+<generatorID>E01791D0-D324-AACB-2FA7-501DD8DBC9F5</generatorID>
+<ownerDesignName>dbModel</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7F66CD47-9782-DB99-E4C1-EBDEA69797B2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2F41ED19-02CC-AE8C-3028-E8BA2BB5DD5D" name="mutations_Chromosomes_FK">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 15:58:50 UTC</createdTime>
+<generatorID>A3680B8B-D627-64A6-77C3-18DBB2344BEC</generatorID>
+<ownerDesignName>dbModel</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C6712826-D8FC-A3A0-FD32-9E7C7E5E8916"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,167 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="0A2282DE-B0BF-B6C6-B2BB-ED2A0151757F" name="mutations">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 14:26:46 UTC</createdTime>
+<ownerDesignName>dbModel</ownerDesignName>
+<engineerTo>
+<item key="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID" id="809CDF48-8772-2BDF-4055-180647CAE881">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 14:27:19 UTC</createdTime>
+<ownerDesignName>dbModel</ownerDesignName>
+<engineerTo>
+<item key="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="chromID" id="47F79E04-2689-6EBC-EF1D-589C983FAE82">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 14:46:25 UTC</createdTime>
+<generatorID>A3680B8B-D627-64A6-77C3-18DBB2344BEC</generatorID>
+<ownerDesignName>dbModel</ownerDesignName>
+<engineerTo>
+<item key="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" value="true"/>
+</engineerTo>
+<referedAttribute>460E0448-7397-3D86-2A81-E944B6F86037</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="position" id="707F9072-DDFF-E9F2-FDB0-B93997C1555A">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 14:37:56 UTC</createdTime>
+<ownerDesignName>dbModel</ownerDesignName>
+<engineerTo>
+<item key="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="reference" id="136313FC-4DFA-5A55-C922-E2C350EB098F">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 14:30:02 UTC</createdTime>
+<ownerDesignName>dbModel</ownerDesignName>
+<engineerTo>
+<item key="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="variant" id="C0C390E2-C7B4-E9AD-40B7-72DF4E62B7CB">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 14:37:35 UTC</createdTime>
+<ownerDesignName>dbModel</ownerDesignName>
+<engineerTo>
+<item key="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="qual" id="206CD04A-2D62-4202-48BF-88F28F56F331">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 14:40:24 UTC</createdTime>
+<ownerDesignName>dbModel</ownerDesignName>
+<engineerTo>
+<item key="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,20,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="allelFreq" id="F771BB99-3CEC-219B-95F9-DEE3D8FE4B95">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 14:48:23 UTC</createdTime>
+<ownerDesignName>dbModel</ownerDesignName>
+<engineerTo>
+<item key="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,5,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cancerFreq" id="5B63D562-A47B-6E87-8F59-5A66C8A34F3A">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-07 09:31:21 UTC</createdTime>
+<ownerDesignName>dbModel</ownerDesignName>
+<engineerTo>
+<item key="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,5,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="allelCount" id="F6396E94-2A82-B4BA-3004-7DB20C564FC4">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-16 10:37:29 UTC</createdTime>
+<generatorID>498BB434-EE12-689F-49D5-AF8C2FBFDFA1</generatorID>
+<ownerDesignName>dbModel</ownerDesignName>
+<engineerTo>
+<item key="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="allelTotal" id="9F1BB946-C073-E763-93B8-EEF610F292C7">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-16 10:37:29 UTC</createdTime>
+<generatorID>B97DDC02-823B-133A-FFE0-780B745700F4</generatorID>
+<ownerDesignName>dbModel</ownerDesignName>
+<engineerTo>
+<item key="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E01791D0-D324-AACB-2FA7-501DD8DBC9F5" name="mutations PK">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 14:27:42 UTC</createdTime>
+<ownerDesignName>dbModel</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>809CDF48-8772-2BDF-4055-180647CAE881</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

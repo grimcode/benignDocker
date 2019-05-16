@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.logical.LogicalDesign>
+   <object objectType="Entity" objectID="0A2282DE-B0BF-B6C6-B2BB-ED2A0151757F" name="mutations" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="BE7470B5-AD07-2F80-86D1-42CDB9C019DD" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="F5FD24EF-5803-88A2-69E9-55169C5385B5" name="Chromosomes" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="BE7470B5-AD07-2F80-86D1-42CDB9C019DD" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Relation" objectID="A3680B8B-D627-64A6-77C3-18DBB2344BEC" name="Relation_1" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Relation" propertyParentId="BE7470B5-AD07-2F80-86D1-42CDB9C019DD" propertySourceId="F5FD24EF-5803-88A2-69E9-55169C5385B5" propertyTargetId="0A2282DE-B0BF-B6C6-B2BB-ED2A0151757F"/>
+</oracle.dbtools.crest.model.design.logical.LogicalDesign>

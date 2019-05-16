@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ProcessModel class="oracle.dbtools.crest.model.design.process.ProcessModel" name="Process Model" id="B6EDB12A-A3E2-B71C-5374-46F0FA9C2E78">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 14:26:30 UTC</createdTime>
+<ownerDesignName>dbModel</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</ProcessModel>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="mutations Chromosomes FK" directorySegmentName="seg_0" id="A3680B8B-D627-64A6-77C3-18DBB2344BEC">
+<createdBy>ajare</createdBy>
+<createdTime>2019-05-02 14:46:25 UTC</createdTime>
+<ownerDesignName>dbModel</ownerDesignName>
+<engineerTo>
+<item key="1BD69BDD-4C7A-FAED-3E8C-801A0E4E43E8" value="true"/>
+</engineerTo>
+<sourcePk>59CC3582-E4CA-3470-66B4-9BD53A17BEDC</sourcePk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>F5FD24EF-5803-88A2-69E9-55169C5385B5</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>0A2282DE-B0BF-B6C6-B2BB-ED2A0151757F</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
