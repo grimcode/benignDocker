@@ -4,5 +4,5 @@ FROM mysql
 ENV MYSQL_DATABASE benignDB
 
 # Put files in image for excecution
-COPY ./sqlScripts/ /docker-entrypoint-initdb.d/
-
+COPY createTable.sql /docker-entrypoint-initdb.d/
+COPY insertData.sql /docker-entrypoint-initdb.d/
