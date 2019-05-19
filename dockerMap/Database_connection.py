@@ -7,7 +7,7 @@ from os.path import join, dirname
 def Extract():
     try:
         # Load env and connect to DB
-        dotenv_path=(join(dirname(__file__), './.env'))
+        dotenv_path=(join(dirname(__file__), '../.env'))
         print(dotenv_path)
         load_dotenv(dotenv_path)
         print(os.getenv("USER"))
@@ -15,6 +15,7 @@ def Extract():
         print(os.getenv("HOST"))
         print(os.getenv("PORT"))
         print(os.getenv("DATABASE"))
+
         connection = psycopg2.connect(user = os.getenv("USER"),
                                       password = os.getenv("PASSWORD"),
                                       host =os.getenv("HOST"),
