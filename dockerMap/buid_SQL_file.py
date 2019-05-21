@@ -1,7 +1,7 @@
 
 
 # Function to create a SQL file for filling the database
-def buildInsertDataFile(vcfPath = "C:/users/ajare/desktop/gnomad.exomes.r2.1.1.sites.Y.vcf",
+def buildInsertDataFile(vcfPath = "C:/users/ajare/desktop/gnomad.exomes.r2.1.1.sites.21.vcf",
                         output = "C:/users/ajare/desktop/insertData.sql"):
 
     file = open(vcfPath,"r")
@@ -35,7 +35,7 @@ def addMutations(file,outputFile):
                 chrom = convertChromToId(lineParts[0])
                 pos = int(lineParts[1])
                 id = lineParts[2]
-                
+                    
                 if id in idList.keys():
                         idList[id] = idList[id]+1
                         id = id + "." + str(idList[id])
