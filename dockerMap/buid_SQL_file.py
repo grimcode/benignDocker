@@ -51,10 +51,10 @@ def addMutations(file,outputFile):
                     benign = 1
                 else:
                     benign = 0
-
-                outputFile.write(
-                    "INSERT INTO Mutations VALUES (\"{}\",{},{},"
-                    "\"{}\",\"{}\",{},{},{},{},{},{});\n".format(id,chrom,pos,
+                if len(ref) < 100 or len(var) < 100:
+                    outputFile.write(
+                        "INSERT INTO Mutations VALUES (\"{}\",{},{},"
+                        "\"{}\",\"{}\",{},{},{},{},{},{});\n".format(id,chrom,pos,
                                                       ref,alt,qual,
                                                       count,total,benign,
                                                       cancerCount,cancerTotal)
