@@ -1,5 +1,6 @@
 FROM mysql
 
+
 # Enviroment variables
 ENV MYSQL_DATABASE=benignDB
 ENV MYSQL_USER=benignDB
