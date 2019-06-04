@@ -11,6 +11,6 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 ENV NAME World
 
 # Run test when building the container
-RUN python test.py
+RUN chmod 644  test.py
 
-# CMD ["python","test.py"]
+CMD ["python","test.py","-h", "172.17.0.2"]
