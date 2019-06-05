@@ -33,7 +33,7 @@ def variants():
         reference_user = reference_user.upper()
 
      if chromID_user is None or position_user is None or variant_user is None or reference_user is None:
-        return ("Niet alle benodige argumenten zijn meegegeven")
+        return ("Not all required arguments were given.")
      cur = con.cursor()
      if (cancer is None or  cancer == 'N' or  cancer == 'NO'):
         query = "SELECT * FROM Mutations NATURAL JOIN Chromosomes WHERE Mutations.chromID = {} and Mutations.position ={} and variant = \"{}\" and Mutations.REFERENCE = \"{}\"  and benign = 0".format(chromID_user,position_user,variant_user, reference_user)
@@ -42,7 +42,7 @@ def variants():
      cur.execute(query)
      result =cur.fetchall()
      if cur.rowcount == 0:
-        return ("Uw query heeft geen match gevonden in de database")
+        return ("None")
      else:
         return str(result)
 
