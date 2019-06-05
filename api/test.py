@@ -21,7 +21,7 @@ def pathroute(chromID_user,position_user,variant_user):
     cur = con.cursor()
     query = "SELECT * FROM Mutations NATURAL JOIN Chromosomes WHERE Mutations.chromID = {} and Mutations.position ={} and variant = \"{}\"  and benign = 0".format(chromID_user,position_user,variant_user)
     cur.execute(query)
-    return (cur.fetchall())
+    return (str(cur.fetchall()))
 
 
 if __name__ == '__main__':
