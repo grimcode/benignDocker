@@ -6,5 +6,6 @@ import json
 def makeSnake(input):
 
     snakefile = open("Snakefile","w+")
-    inputfile = json.load(open(input,"r"))
-
+    snakefile.write(
+    ""
+    )

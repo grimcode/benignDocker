@@ -13,4 +13,4 @@ ENV NAME World
 # Run test when building the container
 RUN chmod 644  test.py
 
-CMD ["python","test.py","-h", "172.17.0.2"]
+CMD ["python","test.py"]

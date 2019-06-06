@@ -1,0 +1,11 @@
+rule all:
+    input:
+        "input"
+
+rule processFile:
+    input:
+        "input"
+    output:
+        "output"
+    shell:
+        "python3 -c 'import processFile as pf; pf.processFile({input},{output})'"
