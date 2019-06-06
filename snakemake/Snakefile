@@ -2,10 +2,16 @@ rule all:
     input:
         "input"
 
-rule processFile:
+rule viewWorkflow:
+
+rule addMetaData:
     input:
         "input"
     output:
         "output"
     shell:
         "python3 -c 'import processFile as pf; pf.processFile({input},{output})'"
+
+rule filterBenign:
+
+rule makeReport:

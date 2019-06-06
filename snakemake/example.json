@@ -1,12 +1,12 @@
 [
   {
-    "chr": "chr1",
-    "pos": 123456,
+    "chr": "chr21",
+    "pos": 11085688,
     "ref": "A",
-    "var": "T"
+    "var": "C"
   },
   {
-    "chr": "chr3",
+    "chr": "chr4",
     "pos": 5453456,
     "ref": "G",
     "var": "GTT"

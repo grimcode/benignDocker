@@ -7,18 +7,27 @@ def processFile(input, output):
     resultList = []
 
     for mutations in jsonFile:
-        url = 'http://172.17.0.3:5000/21/11085688/C'
+
+        url = 'http://172.17.0.3:5000/{}/{}/{}'.format(mutations["chr"].split("chr")[1],mutations["pos"],mutations["var"])
         resp = req.get(url)
         results = resp.text
-        for repl in ["'","[","]","{","}"]:
-            results = results.replace(repl,"")
-        results = results.split(",")
 
-        resultDict = {}
-        for result in results:
-            keyValue = result.split(":")
-            value = convertValue(keyValue[0].strip(), keyValue[1].strip(), resultDict)
-        resultList.append(resultDict)
+        if results.startswith("['<!DOCTYPE HTML PUBLIC"):
+            raise ValueError
+        elif not results.startswith("()"):
+            for repl in ["'","[","]","{","}"]:
+                results = results.replace(repl,"")
+            results = results.split(",")
+            resultDict = {}
+            for result in results:
+                keyValue = result.split(":")
+                value = convertValue(keyValue[0].strip(), keyValue[1].strip(), resultDict)
+
+            resultDict["inDB"] = True
+            resultList.append(resultDict)
+            
+        else:
+            resultList.append(addNonDbMutation(mutations))
 
     outputFile = open(output,"w+")
     json.dump(resultList, outputFile)
@@ -27,15 +36,43 @@ def processFile(input, output):
 def convertValue(key, value, dict):
     keyDict = {
         "REFERENCE"     : "ref",
-        "variant"       : "alt",
+        "variant"       : "var",
         "name"          : "chrom",
-        "ID"            : "GnomAd_ID",
+        "ID"            : "GnomAd_ID"
     }
     if key in keyDict.keys():
         key = keyDict[key]
-    if key in ["pos","cancercount","cancerTotal","allelCount","allelTotal"]:
+
+    if key in ["pos","cancerCount","cancerTotal","allelCount","allelTotal"]:
         value =  int(value)
-    if key != "chromID" and not key.startswith(".."): # Filterout the SQL IDs and unknown GnomAd_ID
+    elif key == "benign":
+        if value == "0":
+            value = False
+        elif value == "1":
+            value = True
+        else:
+            raise ValueError
+
+    if value == "":
+        value = "NA"
+    if key != "chromID": # Filterout the SQL IDs
         dict[key] = value
 
     return dict
+
+def addNonDbMutation(mutation):
+    return {
+        "ref"           : mutation["ref"],
+        "var"           : mutation["var"],
+        "pos"           : mutation["pos"],
+        "chr"           : mutation["chr"],
+        "cancerCount"   : "NA",
+        "cancerTotal"   : "NA",
+        "allelCount"    : "NA",
+        "allelTotal"    : "NA",
+        "GnomAd_ID"     : "NA",
+        "benign"        : False,
+        "inDB"          : False
+    }
+
+processFile("example.json","test.json")
