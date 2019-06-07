@@ -1,17 +1,14 @@
 rule all:
-    input:
-        "input"
+	input:
+		"test.json"
 
-rule viewWorkflow:
+#rule viewWorkflow:
+
 
 rule addMetaData:
-    input:
-        "input"
-    output:
-        "output"
-    shell:
-        "python3 -c 'import processFile as pf; pf.processFile({input},{output})'"
-
-rule filterBenign:
-
-rule makeReport:
+	input:
+		"example.json"
+	output:
+		"test.json"
+	shell:
+		"python3 -c 'import metaDataMiner as mdm; mdm.processFile(\"{input}\",\"{output}\")'"

@@ -2,13 +2,25 @@
   {
     "chr": "chr21",
     "pos": 11085688,
-    "ref": "A",
+    "ref": "CCACCACCACTACCACCACTACCACCACCACCACTACCACCACCACCACCACCACCAT",
     "var": "C"
+  },
+  {
+    "chr": "chr21",
+    "pos": 11085688,
+    "ref": "C",
+    "var": "CTAA"
   },
   {
     "chr": "chr4",
     "pos": 5453456,
     "ref": "G",
     "var": "GTT"
+  },
+  {
+    "chr": "chr21",
+    "pos": 10909652,
+    "ref": "G",
+    "var": "A"
   }
 ]

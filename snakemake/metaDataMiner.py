@@ -1,36 +1,23 @@
+# Author: Alex Janse
+# Version: 1.0
+# Date: June 2019
+# Description: Contains functions that are called by snakemake to add metadata to a mutation json file.
 import json
 import requests as req
+import re
+import multiprocessing as mp
 
 def processFile(input, output):
     file = open(input,"r")
     jsonFile = json.load(file)
     resultList = []
 
-    for mutations in jsonFile:
-
-        url = 'http://172.17.0.3:5000/{}/{}/{}'.format(mutations["chr"].split("chr")[1],mutations["pos"],mutations["var"])
-        resp = req.get(url)
-        results = resp.text
-
-        if results.startswith("['<!DOCTYPE HTML PUBLIC"):
-            raise ValueError
-        elif not results.startswith("()"):
-            for repl in ["'","[","]","{","}"]:
-                results = results.replace(repl,"")
-            results = results.split(",")
-            resultDict = {}
-            for result in results:
-                keyValue = result.split(":")
-                value = convertValue(keyValue[0].strip(), keyValue[1].strip(), resultDict)
-
-            resultDict["inDB"] = True
-            resultList.append(resultDict)
-            
-        else:
-            resultList.append(addNonDbMutation(mutations))
-
+    units = mp.cpu_count()
+    print(units)
+    with mp.Pool(processes = units) as p:
+        resultList.append(p.map(getMetaData,[mutations for mutations in jsonFile]))
     outputFile = open(output,"w+")
-    json.dump(resultList, outputFile)
+    json.dump(resultList[0], outputFile, indent=4)
     outputFile.close()
 
 def convertValue(key, value, dict):
@@ -75,4 +62,24 @@ def addNonDbMutation(mutation):
         "inDB"          : False
     }
 
-processFile("example.json","test.json")
+def getMetaData(mutations):
+    url = 'http://172.17.0.3:5000/?chromID={}&position={}&reference={}&variant={}'.format(mutations["chr"].split("chr")[1],mutations["pos"],mutations["ref"],mutations["var"])
+    resp = req.get(url)
+    results = resp.text
+    if re.search("DOCTYPE",results) is not None:
+        print("Could not find IP-address of API container!")
+        raise ValueError
+    elif not results.lower().startswith("uw"):
+        for repl in ["'","[","]","{","}"]:
+            results = results.replace(repl,"")
+        results = results.split(",")
+        resultDict = {}
+        for result in results:
+            keyValue = result.split(":")
+            value = convertValue(keyValue[0].strip(), keyValue[1].strip(), resultDict)
+
+        resultDict["inDB"] = True
+        return(resultDict)
+
+    else:
+        return(addNonDbMutation(mutations))
