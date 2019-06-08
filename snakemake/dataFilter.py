@@ -5,19 +5,17 @@
 import json
 
 def filterBenign(input, output):
-
     file = json.load(open(input,"r"))
-    filteredData = []
-
-    for mutation in file:
+    filteredData = {}
+    count = 0
+    for mutation in file.values():
         keep = True
-        if not mutation['benign']:
-            print(mutation['benign'])
+        if mutation['isBenign']:
             keep = False
 
         if keep:
-            print("check")
-            filteredData.append(mutation)
-    print(filteredData)
-    outputFile = json.load(open(output,"w+"))
+            filteredData[str(count)] = mutation
+            count += 1
+
+    outputFile = open(output,"w+")
     json.dump(filteredData, outputFile, indent=4)

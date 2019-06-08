@@ -1,32 +1,36 @@
-[
+{ "1":
   {
     "chr": "chr21",
     "pos": 11085688,
     "ref": "CCACCACCACTACCACCACTACCACCACCACCACTACCACCACCACCACCACCACCAT",
     "var": "C"
   },
+  "2":
   {
     "chr": "chr21",
     "pos": 11085688,
     "ref": "C",
     "var": "CTAA"
   },
+  "3":
   {
     "chr": "chr4",
     "pos": 5453456,
     "ref": "G",
     "var": "GTT"
   },
+  "4":
   {
     "chr": "chr21",
     "pos": 10909652,
     "ref": "G",
     "var": "A"
   },
+  "5":
   {
     "chr": "chr21",
     "pos": 10909712,
     "ref": "C",
     "var": "G"
   }
-]
+}

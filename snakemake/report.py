@@ -2,44 +2,40 @@ import json
 from datetime import date
 import os
 
-def createReport(original,result,html = True):
+def createReport(original,result,output):
 
     originalFile = json.load(open(original,"r"))
     resultFile = json.load(open(result,"r"))
     startlen = len(originalFile)
     endlen = len(resultFile)
-    outputText = addIntro(html, original, startlen, endlen)
-    #outputText = addCancer(resultFile,outputText)
+    outputText = addIntro(original, startlen, endlen)
+    outputText += addTable(resultFile)
+    outputFile = open(output,"w+")
+    outputFile.write(outputText)
+    outputFile.close()
 
-    return outputText
-
-def addIntro(html,original, startlen, endlen):
-    title = "Benign Report: "+date.today().strftime("%B %d, %Y")
-    description = "The following report shows the results after " \
+def addIntro(original, startlen, endlen):
+    title = "<h1>Benign Report: "+date.today().strftime("%B %d, %Y")+"</h1><br>"
+    description = "<p>The following report shows the results after " \
                   "filtering out the benign mutations from " + \
-                  original.split(os.sep)[-1] + "."
-    summary = "From the " + str(startlen) + " sequences " + str(startlen - endlen) + \
+                  original.split(os.sep)[-1] + ".</p><br>"
+    summary = "<p>From the " + str(startlen) + " sequences " + str(startlen - endlen) + \
               " turned out to be benign and were filtered out. In " \
               "the results below you can find the non-benign mutations " \
               "that were found in cancer patients and the non-benign " \
-              "mutations found in both cancer as non-cancer patients."
-    content = "1. Cancer Mutations\n2. All Non-Benign Mutations"
+              "mutations found in both cancer as non-cancer patients.</p><br>"
 
-    if html:
-        title = "<h1>"+title+"</h1>"
-        description = "<br><p>"+description+"</p>"
-        summary = "<p>"+summary+"</p>"
-        content = "<ul>" \
-                  "<li><a href=\"#cancer\">Cancer Mutation</a></li>" \
-                  "<li><a href=\"#all\">All Non-Benign Mutations</a></li>" \
-                  "</ul>"
-        return title+description+summary+content
-    else:
-        return title+"\n"+description+"\n"+summary+"\n"+content+"\n"
+    return title+description+summary
 
-
-def addCancer(results,text,html):
-    for result in results:
-        if int(result['cancerCounts']) > 0:
-            if html:
-                print()
+def addTable(results):
+    attributes = ["chrom","pos","ref","var","GnomAd_ID","quality","allelCount","allelTotal","allelFreq","cancerCount","cancerTotal","inDB","isBenign"]
+    table = "<table align = "right" style\"width:100%\">\n<tr>\n"
+    for header in attributes:
+        table += "<th><b><ins>"+header+"</insr></b></th>\n"
+    table += "</tr>\n"
+    for result in results.values():
+        table += "<tr>\n"
+        for att in attributes:
+            table += "<th>"+str(result[att])+"</th>\n"
+        table += "</tr>\n"
+    return table

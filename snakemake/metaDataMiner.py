@@ -10,13 +10,19 @@ import multiprocessing as mp
 def processFile(input, output,cancerOnly):
     file = open(input,"r")
     jsonFile = json.load(file)
-    resultList = []
 
     units = mp.cpu_count()
     with mp.Pool(processes = units) as p:
-        resultList.append(p.map(getMetaData,[[mutations,cancerOnly] for mutations in jsonFile]))
+        results = (p.map(getMetaData,[[mutations,cancerOnly] for mutations in jsonFile.values()]))
+
+    count = 0
+    resultDict = {}
+    for result in results:
+        resultDict[str(count)] = result
+        count += 1
+
     outputFile = open(output,"w+")
-    json.dump(resultList[0], outputFile, indent=4)
+    json.dump(resultDict, outputFile, indent=4)
     outputFile.close()
 
 def convertValue(key, value, dict):
@@ -24,7 +30,10 @@ def convertValue(key, value, dict):
         "REFERENCE"     : "ref",
         "variant"       : "var",
         "name"          : "chrom",
-        "ID"            : "GnomAd_ID"
+        "ID"            : "GnomAd_ID",
+        "benign"        : "isBenign",
+        "position"      : "pos",
+        "qual"          : "quality"
     }
     if key in keyDict.keys():
         key = keyDict[key]
@@ -33,7 +42,7 @@ def convertValue(key, value, dict):
         value =  int(value)
     elif key == "quality":
         value = float(value)
-    elif key == "benign":
+    elif key == "isBenign":
         if value == "0":
             value = False
         elif value == "1":
@@ -56,34 +65,30 @@ def addNonDbMutation(mutation):
         "ref"           : mutation["ref"],
         "var"           : mutation["var"],
         "pos"           : mutation["pos"],
-        "chr"           : mutation["chr"],
+        "chrom"           : mutation["chr"],
         "cancerCount"   : "NA",
         "cancerTotal"   : "NA",
         "allelCount"    : "NA",
         "quality"       : "NA",
         "allelTotal"    : "NA",
         "GnomAd_ID"     : "NA",
-        "benign"        : False,
-        "inDB"          : False
+        "isBenign"      : False,
+        "inDB"          : False,
+        "allelFreq"     : "NA"
     }
 
 def getMetaData(data):
     mutations = data[0]
     cancerOnly = data[1]
-    if cancerOnly:
-        cancerOnly = "Y"
-    else:
-        cancerOnly = "N"
 
     url = 'http://172.17.0.3:5000/?chromID={}&position={}&reference={}&variant={}&cancer={}'.format(mutations["chr"].split("chr")[1],mutations["pos"],mutations["ref"],mutations["var"],cancerOnly)
     resp = req.get(url)
     results = resp.text
-    print(results)
-    print(url)
+
     if re.search("DOCTYPE",results) is not None:
         print("Could not find IP-address of API container!")
         raise ValueError
-    elif not results != None:
+    elif results != "None":
         for repl in ["'","[","]","{","}"]:
             results = results.replace(repl,"")
         results = results.split(",")
@@ -93,6 +98,11 @@ def getMetaData(data):
             value = convertValue(keyValue[0].strip(), keyValue[1].strip(), resultDict)
 
         resultDict["inDB"] = True
+        try:
+            resultDict["allelFreq"] = resultDict["allelCount"] / resultDict["allelTotal"]
+        except Exception as e:
+            resultDict["allelFreq"] = "NA"
+
         return(resultDict)
 
     else:

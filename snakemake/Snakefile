@@ -1,6 +1,6 @@
 rule all:
 	input:
-		"test.json"
+		"test.html"
 
 #rule viewWorkflow:
 
@@ -20,3 +20,13 @@ rule filterBenign:
 		"test.json"
 	shell:
 		"python3 -c 'import dataFilter as df; df.filterBenign(\"{input}\",\"{output}\")'"
+
+
+rule makeReport:
+	input:
+		original="example.json",
+		results="test.json"
+	output:
+		"test.html"
+	shell:
+		"python3 -c 'import report as rp; rp.createReport(\"{input.original}\",\"{input.results}\",\"{output}\")'"

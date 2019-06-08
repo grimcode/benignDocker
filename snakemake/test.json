@@ -45,21 +45,6 @@
         "allelFreq": "NA"
     },
     "3": {
-        "GnomAd_ID": "rs9637281",
-        "pos": 10909652,
-        "ref": "G",
-        "var": "A",
-        "quality": 70617361.42,
-        "allelCount": 32770,
-        "allelTotal": 184352,
-        "isBenign": true,
-        "cancerCount": 2025,
-        "cancerTotal": 10408,
-        "chrom": "21",
-        "inDB": true,
-        "allelFreq": 0.17775776774865476
-    },
-    "4": {
         "GnomAd_ID": "rs10433262",
         "pos": 10909712,
         "ref": "C",
