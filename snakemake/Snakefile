@@ -9,6 +9,14 @@ rule addMetaData:
 	input:
 		"example.json"
 	output:
+		"tempOutput.json"
+	shell:
+		"python3 -c 'import metaDataMiner as mdm; mdm.processFile(\"{input}\",\"{output}\",False)'"
+
+rule filterBenign:
+	input:
+		"tempOutput.json"
+	output:
 		"test.json"
 	shell:
-		"python3 -c 'import metaDataMiner as mdm; mdm.processFile(\"{input}\",\"{output}\")'"
+		"python3 -c 'import dataFilter as df; df.filterBenign(\"{input}\",\"{output}\")'"

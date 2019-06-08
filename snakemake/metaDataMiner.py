@@ -7,15 +7,14 @@ import requests as req
 import re
 import multiprocessing as mp
 
-def processFile(input, output):
+def processFile(input, output,cancerOnly):
     file = open(input,"r")
     jsonFile = json.load(file)
     resultList = []
 
     units = mp.cpu_count()
-    print(units)
     with mp.Pool(processes = units) as p:
-        resultList.append(p.map(getMetaData,[mutations for mutations in jsonFile]))
+        resultList.append(p.map(getMetaData,[[mutations,cancerOnly] for mutations in jsonFile]))
     outputFile = open(output,"w+")
     json.dump(resultList[0], outputFile, indent=4)
     outputFile.close()
@@ -32,6 +31,8 @@ def convertValue(key, value, dict):
 
     if key in ["pos","cancerCount","cancerTotal","allelCount","allelTotal"]:
         value =  int(value)
+    elif key == "quality":
+        value = float(value)
     elif key == "benign":
         if value == "0":
             value = False
@@ -39,9 +40,12 @@ def convertValue(key, value, dict):
             value = True
         else:
             raise ValueError
+    if key == "GnomAd_ID":
+        value = value.split(".")[0]
 
     if value == "":
         value = "NA"
+
     if key != "chromID": # Filterout the SQL IDs
         dict[key] = value
 
@@ -56,20 +60,25 @@ def addNonDbMutation(mutation):
         "cancerCount"   : "NA",
         "cancerTotal"   : "NA",
         "allelCount"    : "NA",
+        "quality"       : "NA",
         "allelTotal"    : "NA",
         "GnomAd_ID"     : "NA",
         "benign"        : False,
         "inDB"          : False
     }
 
-def getMetaData(mutations):
-    url = 'http://172.17.0.3:5000/?chromID={}&position={}&reference={}&variant={}'.format(mutations["chr"].split("chr")[1],mutations["pos"],mutations["ref"],mutations["var"])
+def getMetaData(data):
+    mutations = data[0]
+    cancerOnly = data[1]
+    url = 'http://172.17.0.3:5000/?chromID={}&position={}&reference={}&variant={}&cancer={}'.format(mutations["chr"].split("chr")[1],mutations["pos"],mutations["ref"],mutations["var"],cancerOnly)
     resp = req.get(url)
     results = resp.text
+    print(results)
+    print(url)
     if re.search("DOCTYPE",results) is not None:
         print("Could not find IP-address of API container!")
         raise ValueError
-    elif not results.lower().startswith("uw"):
+    elif not results != None:
         for repl in ["'","[","]","{","}"]:
             results = results.replace(repl,"")
         results = results.split(",")
