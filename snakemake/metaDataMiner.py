@@ -70,6 +70,11 @@ def addNonDbMutation(mutation):
 def getMetaData(data):
     mutations = data[0]
     cancerOnly = data[1]
+    if cancerOnly:
+        cancerOnly = "Y"
+    else:
+        cancerOnly = "N"
+
     url = 'http://172.17.0.3:5000/?chromID={}&position={}&reference={}&variant={}&cancer={}'.format(mutations["chr"].split("chr")[1],mutations["pos"],mutations["ref"],mutations["var"],cancerOnly)
     resp = req.get(url)
     results = resp.text
