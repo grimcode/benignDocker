@@ -1,5 +1,18 @@
 #!/bin/bash
-echo "Welcome to BenignDbApp!"
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]
+then
+echo "usage=\"USEME [-i FILE -o FILE] [-r FILE] [-c [True|False]] -- Program to filter out the bnign mutations inside a json.\"
+\n
+Mandatory:
+  -i FILE  The input json file. See the example.json for an example of the format. 
+  -o FILE  The output json file Be aware that if the file exist, it will be overwritten.
+
+Optional:
+  -r FILE  The report html file. Be aware that if the file exist, it will be overwritten.
+  -c [True|False]  Python boolean if all returned mutations has to be found in cancer patients. Default is False.
+"
+exit 0
+fi
 while getopts i:o:r:c: option
 do
 case "${option}"
@@ -10,16 +23,21 @@ r) REPORT=${OPTARG};;
 c) CANCERONLY=$OPTARG;;
 esac
 done
+
 if [ "$CANCERONLY" == "" ]
 then
 CANCERONLY=False
 fi
+
 if [ "$REPORT" == "" ]
 then
 REPORT=None
 fi
+
 if [ "$INPUT" == "" ] || [ "$OUTPUT" == "" ]
 then echo "Error: The -i and -o arguments has to be filled." | exit 1
 fi
+
 python3 makeSnake.py $INPUT $OUTPUT $REPORT $CANCERONLY
 snakemake -F
+exit 0
