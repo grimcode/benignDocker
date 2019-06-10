@@ -15,27 +15,31 @@ def createReport(original,result,output):
     outputFile.close()
 
 def addIntro(original, startlen, endlen):
-    title = "<h1>Benign Report: "+date.today().strftime("%B %d, %Y")+"</h1><br>"
+    title = "<!DOCTYPE html>\n<h1>Benign Report: "+date.today().strftime("%B %d, %Y")+"</h1>"
     description = "<p>The following report shows the results after " \
                   "filtering out the benign mutations from " + \
-                  original.split(os.sep)[-1] + ".</p><br>"
-    summary = "<p>From the " + str(startlen) + " sequences " + str(startlen - endlen) + \
-              " turned out to be benign and were filtered out. In " \
-              "the results below you can find the non-benign mutations " \
-              "that were found in cancer patients and the non-benign " \
-              "mutations found in both cancer as non-cancer patients.</p><br>"
+                  original.split(os.sep)[-1] + ".</p>"
+    summary = "<p>From the " + str(startlen) + " sequences submitted " + str(startlen - endlen) + \
+              " turned out to be benign and were filtered out.<br>In " \
+              "the results below you can find the non-benign mutations<br></p><br>"
 
     return title+description+summary
 
 def addTable(results):
     attributes = ["chrom","pos","ref","var","GnomAd_ID","quality","allelCount","allelTotal","allelFreq","cancerCount","cancerTotal","inDB","isBenign"]
-    table = "<table align = "right" style\"width:100%\">\n<tr>\n"
+    table = "<section><div style = \"overflow:auto; position: relative; width: 1400px; height : 500px\">"\
+    "<table>\n<thead>\n<tr>\n"
     for header in attributes:
-        table += "<th><b><ins>"+header+"</insr></b></th>\n"
-    table += "</tr>\n"
+        table += "<th><b><ins>"+header+"</ins></b></th>\n"
+    table += "</tr>\n</thead>\n<tbody>\n"
     for result in results.values():
         table += "<tr>\n"
         for att in attributes:
-            table += "<th>"+str(result[att])+"</th>\n"
+            if att == "allelFreq" and isinstance(result[att], float):
+                table += "<th>{0:.4g}</th>\n".format(result[att])
+            else:
+                table += "<th>"+str(result[att])+"</th>\n"
+
         table += "</tr>\n"
+    table += "</tbody>\n</table>\n</div></section>"
     return table

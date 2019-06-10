@@ -1,9 +1,9 @@
 { "1":
   {
     "chr": "chr21",
-    "pos": 11085688,
-    "ref": "CCACCACCACTACCACCACTACCACCACCACCACTACCACCACCACCACCACCACCAT",
-    "var": "C"
+    "pos": 9909031,
+    "ref": "G",
+    "var": "T"
   },
   "2":
   {
@@ -13,6 +13,20 @@
     "var": "CTAA"
   },
   "3":
+  {
+    "chr": "chr21",
+    "pos": 5453456,
+    "ref": "GAAAAAA",
+    "var": "GTT"
+  },
+  "3A":
+  {
+    "chr": "chr4",
+    "pos": 5453456,
+    "ref": "GAGAGAGAGAGA",
+    "var": "GTT"
+  },
+  "3B":
   {
     "chr": "chr4",
     "pos": 5453456,
@@ -32,5 +46,40 @@
     "pos": 10909712,
     "ref": "C",
     "var": "G"
+  },
+  "6":
+  {
+    "chr": "chr21",
+    "pos": 14743954,
+    "ref": "C",
+    "var": "T"
+  },
+  "a6":
+  {
+    "chr": "chr21",
+    "pos": 9909208,
+    "ref": "C",
+    "var": "T"
+  },
+  "6a":
+  {
+    "chr": "chr21",
+    "pos": 9909219,
+    "ref": "C",
+    "var": "A"
+  },
+  "6b":
+  {
+    "chr": "chr21",
+    "pos": 9909179,
+    "ref": "G",
+    "var": "A"
+  },
+  "6x":
+  {
+    "chr": "chr21",
+    "pos": 9909218,
+    "ref": "G",
+    "var": "A"
   }
 }

@@ -65,7 +65,7 @@ def addNonDbMutation(mutation):
         "ref"           : mutation["ref"],
         "var"           : mutation["var"],
         "pos"           : mutation["pos"],
-        "chrom"           : mutation["chr"],
+        "chrom"         : mutation["chr"].split("chr")[1],
         "cancerCount"   : "NA",
         "cancerTotal"   : "NA",
         "allelCount"    : "NA",

@@ -1,0 +1,25 @@
+#!/bin/bash
+echo "Welcome to BenignDbApp!"
+while getopts i:o:r:c: option
+do
+case "${option}"
+in
+i) INPUT=${OPTARG};;
+o) OUTPUT=${OPTARG};;
+r) REPORT=${OPTARG};;
+c) CANCERONLY=$OPTARG;;
+esac
+done
+if [ "$CANCERONLY" == "" ]
+then
+CANCERONLY=False
+fi
+if [ "$REPORT" == "" ]
+then
+REPORT=None
+fi
+if [ "$INPUT" == "" ] || [ "$OUTPUT" == "" ]
+then echo "Error: The -i and -o arguments has to be filled." | exit 1
+fi
+python3 makeSnake.py $INPUT $OUTPUT $REPORT $CANCERONLY
+snakemake -F

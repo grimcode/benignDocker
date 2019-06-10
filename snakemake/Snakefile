@@ -1,9 +1,6 @@
 rule all:
 	input:
-		"test.html"
-
-#rule viewWorkflow:
-
+		"workflows/workflow_June_10_2019.svg"
 
 rule addMetaData:
 	input:
@@ -30,3 +27,10 @@ rule makeReport:
 		"test.html"
 	shell:
 		"python3 -c 'import report as rp; rp.createReport(\"{input.original}\",\"{input.results}\",\"{output}\")'"
+
+rule makeWorkflow:
+	input:
+		"test.html",
+	output:
+		"workflows/workflow_June_10_2019.svg"
+	shell: "snakemake --dag -s Snakefile | dot -Tsvg > workflows/workflow_June_10_2019.svg | echo 'BenignDbApp is finished. Checkout the workflow directory for an overview of the runned workflow. The error below is safe and will not have inpact on the results.'"
