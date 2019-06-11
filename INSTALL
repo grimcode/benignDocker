@@ -4,13 +4,14 @@
 STARTPOINT=$PWD
 WORKDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd $WORKDIR
-echo "Start to build docker images"
 docker build -t=benign_db database/
-docker build -t=benign_api api/
-echo "Going to run the containers"
 docker run -d -p 3306:3306 --name benign_db benign_db
-sleep 1m
+docker build -t=benign_api api/
+sleep 1m # Gives the database container more time to build up. Were this script to follow it wont be able tp get the IP address of this container
+DBIP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' benign_db)
+python3 setIP.py $DBIP
 docker run -d -p 80:80 --name benign_api benign_api
+echo ""
 echo "The containers should be up and running."
 echo "You can check this using: docker ps"
 echo "This should contains two running containers named benign_db and benign_api"
