@@ -6,16 +6,15 @@
 from flask import Flask, render_template,request
 # Module that is being used to communicate with the database.
 import pymysql
+# Module to load the enviroment file (.env file).
 from dotenv import load_dotenv
 import os
 from os.path import join, dirname
 
-# Make a connection to the database.
+# Make a connection to the database, using the connection arguments listed in the enviroment file.
 app = Flask(__name__)
 dotenv_path=(join(dirname(__file__), './.env'))
-print(dotenv_path)
 load_dotenv(dotenv_path)
-print(os.getenv("USER"))
 con = pymysql.connect(host=os.getenv("HOST"), user=os.getenv("USER"), password=os.getenv("PASSWORD"), db=os.getenv("DATABASE"), cursorclass=pymysql.cursors.
                            DictCursor)
 
