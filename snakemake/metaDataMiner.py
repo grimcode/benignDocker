@@ -45,7 +45,7 @@ def convertValue(key, value, dict):
     if key in keyDict.keys():
         key = keyDict[key]
 
-    if key in ["pos","cancerCount","cancerTotal","allelCount","allelTotal"]:
+    if key in ["pos","cancerCount","cancerTotal","allelCount","allelTotal","chrom"]:
         value =  int(value)
     elif key == "quality":
         value = float(value)
@@ -56,6 +56,12 @@ def convertValue(key, value, dict):
             value = True
         else:
             raise ValueError
+
+    if key == "chrom":
+        if value != 21:
+            print("WARNING: THE DATABASE ONLY CONTAINS MUTATIONS OF CHROMOSOME 21."
+		  "Cause error: found mutation with chr"+str(value))
+
     if key == "GnomAd_ID":
         value = value.split(".")[0]
 

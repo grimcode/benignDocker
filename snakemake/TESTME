@@ -1,8 +1,14 @@
 #!/bin/bash
 echo "Welcome to the test center!"
-
-./USEME -i testFiles/example.json -o testFiles/test.json -r testFiles/test.html -c False && echo "First test was a succes!"
-
-./USEME -i testFiles/example.json -o testFiles/test.json -r testFiles/test.html -c True
+STARTPOINT=$PWD
+WORKDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd $WORKDIR
+echo "Going to test if the main functions work"
+echo ""
+$WORKDIR/USEME -i testFiles/example.json -o testFiles/test.json -r testFiles/test.html -c False && echo "First test was a succes!"
+echo ""
+echo ""
+echo "Testing if cancerOnly argument is functional"
+$WORKDIR/USEME -i testFiles/example.json -o testFiles/test.json -r testFiles/test.html -c True
 python3 -c 'import json; import summary as sm; x,y,z,i = sm.getCounts(json.load(open("testFiles/test.json"))) ;print("\nTest was succesfull!\nSee the results in the testFile directory\n") if len(json.load(open("testFiles/test.json"))) == x else print("\nERROR: The results were not the same as expected. Please contact the app developer for help.\n")'
 

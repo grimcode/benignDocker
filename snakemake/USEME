@@ -1,4 +1,7 @@
 #!/bin/bash
+STARTPOINT=$PWD
+WORKDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd $WORKDIR
 
 # Print the help page if asked
 if [ "$1" == "-h" ] || [ "$1" == "--help" ]
@@ -13,6 +16,7 @@ Optional:
   -r FILE  The report html file. Be aware that if the file exist, it will be overwritten.
   -c [True|False]  Python boolean if all returned mutations has to be found in cancer patients. Default is False.
 "
+CD $STARTPOINT
 exit 0
 fi
 
@@ -42,11 +46,11 @@ fi
 
 # Gives error when the mandatory variables are not found
 if [ "$INPUT" == "" ] || [ "$OUTPUT" == "" ]
-then echo "Error: The -i and -o arguments has to be filled." && exit 1
+then echo "Error: The -i and -o arguments has to be filled." && cd $STARTPOINT && exit 1
 fi
 
 # Get IP address of the api container
 BDBIP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' benign_api)
 
 python3 makeSnake.py $INPUT $OUTPUT $REPORT $CANCERONLY $BDBIP
-snakemake --dag | dot -Tsvg > workflows/workflow_`date +%Y_%m_%d`_.svg && echo "Made a workflow. Check out the workflow directory!" && snakemake -F && exit 0
+snakemake --dag | dot -Tsvg > workflows/workflow_`date +%Y_%m_%d`_.svg && echo "Made a workflow. Check out the workflow directory!" && snakemake -F && cd $STARTPOINT && exit 0
