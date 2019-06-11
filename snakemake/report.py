@@ -1,15 +1,25 @@
+#################################################
+# Author: Alex Janse                            #
+# Date: June 2019                               #
+# Version: 1.0                                  #
+# Description: Function to make a report out of #
+#              the results from dataFilter.py   #
+#################################################
 import json
 from datetime import date
 import os
 
+# Main like function
 def createReport(original,result,output):
-
     originalFile = json.load(open(original,"r"))
     resultFile = json.load(open(result,"r"))
+
     startlen = len(originalFile)
     endlen = len(resultFile)
+
     outputText = addIntro(original, startlen, endlen)
     outputText += addTable(resultFile)
+
     outputFile = open(output,"w+")
     outputFile.write(outputText)
     outputFile.close()

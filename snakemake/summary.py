@@ -1,3 +1,9 @@
+#########################################################
+# Author: Alex Janse                                    #
+# Date: June 2019                                       #
+# Version: 1.0                                          #
+# Description: Function to get the summary of results   #
+#########################################################
 import json
 
 def getSummary(input, output, original):
