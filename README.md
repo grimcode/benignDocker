@@ -1,9 +1,9 @@
 # Welcome to BenignNoMore!
   
-##Summary:
+## Summary:
 BenignNoMore is a state of the art application that is able to filter out benign human DNA mutations from a JSON file.
 
-##Requirements:
+## Requirements:
 OS:
 - Ubuntu
 Software:
@@ -11,7 +11,7 @@ Software:
 - Python3
 - Snakemake
 
-##Usage:
+## Usage:
 To start the application please use the RUNME bash script. This script will use docker to build the containers and run them.  
 This is important to use to make sure it is proper installed.  
 ```bash
