@@ -12,7 +12,7 @@ from os.path import join, dirname
 
 # Make a connection to the database.
 app = Flask(__name__)
-dotenv_path=(join(dirname(__file__), '../.env'))
+dotenv_path=(join(dirname(__file__), './.env'))
 print(dotenv_path)
 load_dotenv(dotenv_path)
 print(os.getenv("USER"))
