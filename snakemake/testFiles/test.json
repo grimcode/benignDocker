@@ -1,0 +1,17 @@
+{
+    "0": {
+        "GnomAd_ID": "rs10433262",
+        "pos": 10909712,
+        "ref": "C",
+        "var": "G",
+        "quality": 7039209.84,
+        "allelCount": 298,
+        "allelTotal": 223342,
+        "isBenign": false,
+        "cancerCount": 23,
+        "cancerTotal": 12406,
+        "chrom": "21",
+        "inDB": true,
+        "allelFreq": 0.0013342765803118087
+    }
+}

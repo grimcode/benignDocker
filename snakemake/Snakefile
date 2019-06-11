@@ -1,36 +1,41 @@
 rule all:
 	input:
-		"workflows/workflow_June_10_2019.svg"
+		"summaries/summary_June_11_2019.svg"
 
 rule addMetaData:
 	input:
-		"example.json"
+		"testFiles/example.json"
 	output:
 		"tempOutput.json"
 	shell:
-		"python3 -c 'import metaDataMiner as mdm; mdm.processFile(\"{input}\",\"{output}\",False)'"
+		"python3 -c 'import metaDataMiner as mdm; mdm.processFile(\"{input}\",\"{output}\",True,\"172.17.0.3\")'"
 
 rule filterBenign:
 	input:
 		"tempOutput.json"
 	output:
-		"test.json"
+		"testFiles/test.json"
 	shell:
-		"python3 -c 'import dataFilter as df; df.filterBenign(\"{input}\",\"{output}\")'"
-
+		"""
+		python3 -c 'import dataFilter as df; df.filterBenign(\"{input}\",\"{output}\")',
+		rm tempOutput.json
+		"""
 
 rule makeReport:
 	input:
-		original="example.json",
-		results="test.json"
+		original="testFiles/example.json",
+		results="testFiles/test.json"
 	output:
-		"test.html"
+		"testFiles/test.html"
 	shell:
 		"python3 -c 'import report as rp; rp.createReport(\"{input.original}\",\"{input.results}\",\"{output}\")'"
 
-rule makeWorkflow:
+rule getSummary:
 	input:
-		"test.html",
+		bait = "testFiles/test.html",
+		results ="testFiles/test.json",
+		original ="testFiles/example.json"
 	output:
-		"workflows/workflow_June_10_2019.svg"
-	shell: "snakemake --dag -s Snakefile | dot -Tsvg > workflows/workflow_June_10_2019.svg | echo 'BenignDbApp is finished. Checkout the workflow directory for an overview of the runned workflow. The error below is safe and will not have inpact on the results.'"
+		"summaries/summary_June_11_2019.svg"
+	shell:
+		"python3 -c 'import summary as sm; sm.getSummary(\"{input.results}\",\"{output}\",\"{input.original}\")' && cat summaries/summary_June_11_2019.svg"

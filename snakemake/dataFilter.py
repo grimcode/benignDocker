@@ -1,7 +1,9 @@
-# Author: Alex Janse
-# Version: 1.0
-# Date: June 2019
-# Description: Function to filter out the benign mutations.
+#############################################################
+# Author: Alex Janse                                        #
+# Version: 1.0                                              #
+# Date: June 2019                                           #
+# Description: Function to filter out the benign mutations. #
+#############################################################
 import json
 
 def filterBenign(input, output):

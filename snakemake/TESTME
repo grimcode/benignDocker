@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "Welcome to the test center!"
+
+./USEME -i testFiles/example.json -o testFiles/test.json -r testFiles/test.html -c False && echo "First test was a succes!"
+
+./USEME -i testFiles/example.json -o testFiles/test.json -r testFiles/test.html -c True
+python3 -c 'import json; import summary as sm; x,y,z,i = sm.getCounts(json.load(open("testFiles/test.json"))) ;print("\nTest was succesfull!\nSee the results in the testFile directory\n") if len(json.load(open("testFiles/test.json"))) == x else print("\nERROR: The results were not the same as expected. Please contact the app developer for help.\n")'
+

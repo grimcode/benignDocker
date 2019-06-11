@@ -1,25 +1,31 @@
-# Author: Alex Janse
-# Version: 1.0
-# Date: June 2019
-# Description: Contains functions that are called by snakemake to add metadata to a mutation json file.
+#########################################################
+# Author: Alex Janse                                    #
+# Version: 1.0                                          #
+# Date: June 2019                                       #
+# Description: Contains functions that are called by    #
+#              snakemake to add metadata to a mutation  #
+#              json file.                               #
+#########################################################
 import json
 import requests as req
 import re
 import multiprocessing as mp
 
-def processFile(input, output,cancerOnly):
-    file = open(input,"r")
-    jsonFile = json.load(file)
+# Loop parallel over the file and process the results
+def processFile(input, output,cancerOnly, ip):
 
-    units = mp.cpu_count()
+    jsonFile = json.load(open(input,"r"))
+
+    units = mp.cpu_count() # Counts the number of CPU cores
     with mp.Pool(processes = units) as p:
-        results = (p.map(getMetaData,[[mutations,cancerOnly] for mutations in jsonFile.values()]))
+        results = (p.map(getMetaData,[[mutations,cancerOnly, ip] for mutations in jsonFile.values()]))
 
     count = 0
     resultDict = {}
     for result in results:
-        resultDict[str(count)] = result
-        count += 1
+        if result is not None:
+            resultDict[str(count)] = result
+            count += 1
 
     outputFile = open(output,"w+")
     json.dump(resultDict, outputFile, indent=4)
@@ -80,8 +86,9 @@ def addNonDbMutation(mutation):
 def getMetaData(data):
     mutations = data[0]
     cancerOnly = data[1]
+    ip = data[2]
 
-    url = 'http://172.17.0.3:5000/?chromID={}&position={}&reference={}&variant={}&cancer={}'.format(mutations["chr"].split("chr")[1],mutations["pos"],mutations["ref"],mutations["var"],cancerOnly)
+    url = 'http://'+ip+':5000/?chromID={}&position={}&reference={}&variant={}&cancer={}'.format(mutations["chr"].split("chr")[1],mutations["pos"],mutations["ref"],mutations["var"],cancerOnly)
     resp = req.get(url)
     results = resp.text
 
@@ -105,5 +112,5 @@ def getMetaData(data):
 
         return(resultDict)
 
-    else:
+    elif not cancerOnly:
         return(addNonDbMutation(mutations))

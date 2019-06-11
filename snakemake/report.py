@@ -28,18 +28,24 @@ def addIntro(original, startlen, endlen):
 def addTable(results):
     attributes = ["chrom","pos","ref","var","GnomAd_ID","quality","allelCount","allelTotal","allelFreq","cancerCount","cancerTotal","inDB","isBenign"]
     table = "<section><div style = \"overflow:auto; position: relative; width: 1400px; height : 500px\">"\
-    "<table>\n<thead>\n<tr>\n"
-    for header in attributes:
+            "<table>\n<thead>\n<tr>\n"
+    for header in attributes+["GnomadURL"]:
         table += "<th><b><ins>"+header+"</ins></b></th>\n"
     table += "</tr>\n</thead>\n<tbody>\n"
-    for result in results.values():
-        table += "<tr>\n"
-        for att in attributes:
-            if att == "allelFreq" and isinstance(result[att], float):
-                table += "<th>{0:.4g}</th>\n".format(result[att])
-            else:
-                table += "<th>"+str(result[att])+"</th>\n"
 
-        table += "</tr>\n"
+    for result in results.values():
+            table += "<tr>\n"
+            for att in attributes:
+                if att == "allelFreq" and isinstance(result[att], float):
+                    table += "<th>{0:.4g}</th>\n".format(result[att])
+                else:
+                    table += "<th>"+str(result[att])+"</th>\n"
+            if str(result["inDB"]) != "False":
+                table += "<th><a href=\"https://gnomad.broadinstitute.org/variant/"+str(result["chrom"])+"-"+ \
+                str(result["pos"])+"-"+str(result["ref"])+"-"+str(result["var"])+"\" target = \"_blank\">See GnomAd page</a></th>\n"
+            else:
+                table += "<th>NA</th>\n"
+
+            table += "</tr>\n"
     table += "</tbody>\n</table>\n</div></section>"
     return table
