@@ -1,19 +1,25 @@
+# Indicates that this is a python file.  
 #!/usr/local/bin/python3
+# The necessary imports to run this python file. 
+
+# Module that handles url_requests. 
 from flask import Flask, render_template,request
+# Module that is being used to communicate with the database.
 import pymysql
-import os, getpass
+from dotenv import load_dotenv
+import os
+from os.path import join, dirname
 
-
-
-print (getpass.getuser())
+# Make a connection to the database.
 app = Flask(__name__)
-host = "172.17.0.2"
-user = "root"
-password = "docker"
-db = "benignDB"
-con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.
+dotenv_path=(join(dirname(__file__), '../.env'))
+print(dotenv_path)
+load_dotenv(dotenv_path)
+print(os.getenv("USER"))
+con = pymysql.connect(host=os.getenv("HOST"), user=os.getenv("USER"), password=os.getenv("PASSWORD"), db=os.getenv("DATABASE"), cursorclass=pymysql.cursors.
                            DictCursor)
 
+# Catches url_request arguments.
 @app.route('/', methods=['GET', 'POST'])
 def variants():
      chromID_user = request.args.get('chromID')
@@ -35,6 +41,7 @@ def variants():
      if chromID_user is None or position_user is None or variant_user is None or reference_user is None:
         return ("Not all required arguments were given.")
      cur = con.cursor()
+     #  Fetches data out of de database based on the arguments given in the request url.
      if (cancer is None or  cancer == 'N' or  cancer == 'NO' or cancer == False  or cancer == "FALSE" or cancer =="false" or cancer == "0"):
         query = "SELECT * FROM Mutations NATURAL JOIN Chromosomes WHERE Mutations.chromID = {} and Mutations.position ={} and variant = \"{}\" and Mutations.REFERENCE = \"{}\"".format(chromID_user,position_user,variant_user, reference_user)
      else:
@@ -46,7 +53,7 @@ def variants():
      else:
         return str(result)
 
-
+# Translates the X and Y chromosomes into a chromosome number used to fetch data out of the database.
 def chromo_dict(chromosome):
         chromosome_dict = {X:23,
                           Y:24}
