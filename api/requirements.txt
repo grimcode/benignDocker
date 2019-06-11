@@ -2,8 +2,3 @@ Flask
 pymysql
 cryptography
 python-dotenv
-<<<<<<< HEAD
-
-=======
->>>>>>> 9638a84c7ac040a01d14fd322aa43f646da3f3a5
-
