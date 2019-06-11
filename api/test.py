@@ -6,15 +6,17 @@
 from flask import Flask, render_template,request
 # Module that is being used to communicate with the database.
 import pymysql
-
+from dotenv import load_dotenv
+import os
+from os.path import join, dirname
 
 # Make a connection to the database.
 app = Flask(__name__)
-host = "172.17.0.2"
-user = "root"
-password = "docker"
-db = "benignDB"
-con = pymysql.connect(host=host, user=user, password=password, db=db, cursorclass=pymysql.cursors.
+dotenv_path=(join(dirname(__file__), '../.env'))
+print(dotenv_path)
+load_dotenv(dotenv_path)
+print(os.getenv("USER"))
+con = pymysql.connect(host=os.getenv("HOST"), user=os.getenv("USER"), password=os.getenv("PASSWORD"), db=os.getenv("DATABASE"), cursorclass=pymysql.cursors.
                            DictCursor)
 
 # Catches url_request arguments.
