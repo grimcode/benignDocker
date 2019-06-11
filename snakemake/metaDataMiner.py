@@ -31,6 +31,7 @@ def processFile(input, output,cancerOnly, ip):
     json.dump(resultDict, outputFile, indent=4)
     outputFile.close()
 
+# Adjust the results from the database
 def convertValue(key, value, dict):
     keyDict = {
         "REFERENCE"     : "ref",
@@ -66,6 +67,7 @@ def convertValue(key, value, dict):
 
     return dict
 
+# Add unknown mutation to the results
 def addNonDbMutation(mutation):
     return {
         "ref"           : mutation["ref"],
@@ -83,6 +85,7 @@ def addNonDbMutation(mutation):
         "allelFreq"     : "NA"
     }
 
+# Process the database results
 def getMetaData(data):
     mutations = data[0]
     cancerOnly = data[1]
