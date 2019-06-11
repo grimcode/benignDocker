@@ -36,3 +36,6 @@ For an example of an input, please check the example.json located in the snakema
 cat ./snakemake/testFiles/example.json
 ```  
 Please be aware that the main keys ("0","1"...etc) are arbitrair and serves no role in this application but are necesary for the JSON importers.
+
+## Expanding the db
+For now only chromosome 21 mutations are present in the database. When other data is required make sure that the benign container are removed from docker before moving on. Then you can use the buildInsertDataFile() function of the build_SQL_file.py in the database directory with as argument the path to the vcf file. After running this function you should be able to use the INSTALL script to proceed as normal.
