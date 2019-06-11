@@ -1,0 +1,19 @@
+
+#!/bin/bash
+
+STARTPOINT=$PWD
+WORKDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd $WORKDIR
+echo "Start to build docker images"
+docker build -t=benign_db database/
+docker build -t=benign_api api/
+echo "Going to run the containers"
+docker run -d -p 3306:3306 --name benign_db benign_db
+sleep 1m # This is used to give the db time to build on the background. When not given enough time the connection between api and db is not possible
+docker run -d -p 80:80 --name benign_api benign_api
+echo "The containers should be up and running."
+echo "You can check this using: docker ps"
+echo "This should contains two running containers named benign_db and benign_api"
+echo "If you want to stop the containers fromrunning use: docker stop benign_db && docker stop benign_api"
+cd $STARTPOINT
+exit 0
