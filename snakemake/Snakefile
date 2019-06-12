@@ -8,7 +8,7 @@ rule addMetaData:
 	output:
 		"tempOutput.json"
 	shell:
-		"python3 -c 'import metaDataMiner as mdm; mdm.processFile(\"{input}\",\"{output}\",True,\"172.17.0.3\")'"
+		"python3 -c 'import metaDataMiner as mdm; mdm.processFile(\"{input}\",\"{output}\",False,\"172.17.0.3\")'"
 
 rule filterBenign:
 	input:
