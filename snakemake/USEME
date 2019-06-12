@@ -1,12 +1,5 @@
 #!/bin/bash
 
-if [ $(docker inspect -f '{{.State.Running}}' benign_db) == "false" ]
-then
-docker start benign_db
-sleep 1m
-docker start benign_api
-fi
-
 STARTPOINT=$PWD
 WORKDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd $WORKDIR
@@ -17,7 +10,7 @@ then
 echo "usage=\"USEME [-i FILE -o FILE] [-r FILE] [-c [True|False]] -- Program to filter out the bnign mutations inside a json.\"
 \n
 Mandatory:
-  -i FILE  The input json file. See the example.json for an example of the format. 
+  -i FILE  The input json file. See the example.json for an example of the format.
   -o FILE  The output json file Be aware that if the file exist, it will be overwritten.
 
 Optional:
@@ -27,6 +20,14 @@ Optional:
 CD $STARTPOINT
 exit 0
 fi
+
+if [ $(docker inspect -f '{{.State.Running}}' benign_db) == "false" ]
+then
+docker start benign_db
+sleep 1m
+docker start benign_api
+fi
+
 
 # Run application:
 ## Get variables
