@@ -8,10 +8,10 @@ OS:
 - Ubuntu  
   
 Software:
-- Docker
-- Python3
-- Snakemake
-- Graphviz
+- docker
+- python3
+- snakemake
+- graphviz
 
 ## Usage:
 To install the application please use the INSTALL bash script. This script will use docker to build the containers and run them.  
