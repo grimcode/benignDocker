@@ -1,6 +1,6 @@
 rule all:
 	input:
-		"summaries/summary_June_11_2019.svg"
+		"summaries/summary_June_12_2019.svg"
 
 rule addMetaData:
 	input:
@@ -36,6 +36,6 @@ rule getSummary:
 		results ="testFiles/test.json",
 		original ="testFiles/example.json"
 	output:
-		"summaries/summary_June_11_2019.svg"
+		"summaries/summary_June_12_2019.svg"
 	shell:
-		"python3 -c 'import summary as sm; sm.getSummary(\"{input.results}\",\"{output}\",\"{input.original}\")' && cat summaries/summary_June_11_2019.svg"
+		"python3 -c 'import summary as sm; sm.getSummary(\"{input.results}\",\"{output}\",\"{input.original}\")' && cat summaries/summary_June_12_2019.svg"

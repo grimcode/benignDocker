@@ -1,4 +1,11 @@
 #!/bin/bash
+if [$(docker inspect -f '{{.State.Running}}' benign_db) != true]
+then
+docker start benign_db
+sleep 1m
+docker start benign_api
+fi
+
 STARTPOINT=$PWD
 WORKDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd $WORKDIR
@@ -53,4 +60,4 @@ fi
 BDBIP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' benign_api)
 
 python3 makeSnake.py $INPUT $OUTPUT $REPORT $CANCERONLY $BDBIP
-snakemake --dag | dot -Tsvg > workflows/workflow_`date +%Y_%m_%d`_.svg && echo "Made a workflow. Check out the workflow directory!" && snakemake -F && cd $STARTPOINT && exit 0
+snakemake --dag | dot -Tsvg > workflows/workflow_`date +%Y_%m_%d__%H_%M`_.svg && echo "Made a workflow. Check out the workflow directory!" && snakemake -F && cd $STARTPOINT && exit 0
