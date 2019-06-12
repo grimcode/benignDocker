@@ -11,6 +11,7 @@ Software:
 - Docker
 - Python3
 - Snakemake
+- Graphviz
 
 ## Usage:
 To install the application please use the INSTALL bash script. This script will use docker to build the containers and run them.  
