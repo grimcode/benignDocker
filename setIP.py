@@ -1,3 +1,12 @@
+#############################################
+# Author: Alex Janse                        #
+# Date: June 2019                           #
+# Version: 1.0                              #
+# Description: Script to set the database   #
+# 	       container IP in the .env     #
+#  	       file which is needed for     #
+#	       the api container.	    #
+#############################################
 import sys
 
 ip = sys.argv[1]

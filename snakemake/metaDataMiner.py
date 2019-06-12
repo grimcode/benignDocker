@@ -61,7 +61,10 @@ def convertValue(key, value, dict):
         if value != 21:
             print("WARNING: THE DATABASE ONLY CONTAINS MUTATIONS OF CHROMOSOME 21."
 		  "Cause error: found mutation with chr"+str(value))
-
+    elif key == "ref" or ket == "var":
+        if len(value) > 100:
+            print("WARNING: THE DATABASE ONLY CONTAINS MUTATIONS WITH A MAXIMUM LENGTH OF 100 CHARACTERS AS REFERENCE OR VARIANT NUCLEOTIDES."
+                  "Cause error: found mutation with as "+key+": "+value+" which has a length of "+len(value)+".\n")
     if key == "GnomAd_ID":
         value = value.split(".")[0]
 
