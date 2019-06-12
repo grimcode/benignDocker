@@ -13,7 +13,7 @@ Software:
 - Snakemake
 
 ## Usage:
-To start the application please use the RUNME bash script. This script will use docker to build the containers and run them.  
+To install the application please use the INSTALL bash script. This script will use docker to build the containers and run them.  
 This is important to use to make sure it is proper installed.  
 ```bash
 ./INSTALL
